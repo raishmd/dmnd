@@ -51,11 +51,17 @@ export default function Home() {
     window.print();
   };
 
-  const handleDownloadPDF = async () => {
-    const { default: html2pdf } = await import('html2pdf.js');
+  const handleDownloadPDF = () => {
     const element = previewRef.current?.querySelector('[data-page]');
     
-    if (!element) return;
+    if (!element || typeof window === 'undefined') return;
+
+    // Use window.html2pdf if available (loaded from public/libs)
+    const html2pdf = (window as any).html2pdf;
+    if (!html2pdf) {
+      alert('PDF library not loaded. Please reload the page.');
+      return;
+    }
 
     const opt = {
       margin: 0,

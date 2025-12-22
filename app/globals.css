@@ -23,26 +23,7 @@ html {
     scroll-behavior: smooth;
 }
 
-@font-face {
-    font-family: 'Times New Roman Local';
-    src: url('/fonts/times.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
-@font-face {
-    font-family: 'Times New Roman Local';
-    src: url('/fonts/timesbd.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Times New Roman Local';
-    src: url('/fonts/timesi.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
 
 /* Print Styles */
 @media print {
