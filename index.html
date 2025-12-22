@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مولّد الطلب الخطي الجزائري</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Libraries -->
+    <script src="libs/html2pdf.bundle.min.js"></script>
+    <script src="libs/html-docx.js"></script>
+    <script src="libs/FileSaver.min.js"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#006633">
+    <link rel="apple-touch-icon" href="icon.png">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+
+<body>
+
+    <div class="app-container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <div class="form-header">
+                <h1>مولّد الطلب الخطي</h1>
+                <p style="font-size: 0.8rem; color: #666;">أدخل معلوماتك لإنشاء الطلب تلقائياً</p>
+            </div>
+
+            <div class="form-group">
+                <label>حجم الخط</label>
+                <input type="range" id="fontSize" min="14" max="20" value="16" step="1">
+                <div style="text-align: center; font-size: 0.8rem;" id="fontSizeVal">16pt</div>
+            </div>
+
+            <div class="form-group">
+                <label>الاسم واللقب</label>
+                <input type="text" id="inputName" placeholder="مثال: محمد أحمد">
+            </div>
+
+            <div class="form-group">
+                <label>العنوان الكامل</label>
+                <input type="text" id="inputAddress" placeholder="مثال: حي الزهور، الجزائر الوسطى">
+            </div>
+
+            <div class="form-group">
+                <label>رقم الهاتف</label>
+                <input type="tel" id="inputPhone" placeholder="0661 00 00 00">
+            </div>
+
+            <div class="form-group">
+                <label>التاريخ</label>
+                <input type="date" id="inputDate">
+            </div>
+
+            <div class="form-group">
+                <label>إلى السيد مدير</label>
+                <input type="text" id="inputDirector" placeholder="مثال: الموارد البشرية">
+            </div>
+
+            <div class="form-group">
+                <label>الموضوع</label>
+                <input type="text" id="inputSubject" placeholder="مثال: طلب توظيف">
+            </div>
+
+            <div class="form-group">
+                <label>محتوى الطلب</label>
+                <textarea id="inputContent" placeholder="أكتب نص الطلب هنا..."></textarea>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" onclick="printRequest()">
+                    <span>🖨️ طباعة</span>
+                </button>
+                <button class="btn btn-secondary" onclick="downloadPDF()">
+                    <span>📄 تحميل PDF</span>
+                </button>
+                <button class="btn btn-outline" onclick="downloadDOCX()">
+                    <span>📝 تحميل DOCX</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+            <div id="request-page">
+                <!-- Header: Sender & Date -->
+                <div class="page-header">
+                    <div class="sender-info">
+                        <div>الاسم واللقب: <span id="outName">................</span></div>
+                        <div>العنوان: <span id="outAddress">................</span></div>
+                        <div>رقم الهاتف: <span id="outPhone">................</span></div>
+                    </div>
+                    <div class="date-info">
+                        <span id="outDate">..../../..</span>
+                    </div>
+                </div>
+
+                <!-- Recipient -->
+                <div class="recipient-section">
+                    إلى السيد مدير: <span id="outDirector">................</span>
+                </div>
+
+                <!-- Subject -->
+                <div class="subject-section">
+                    الموضوع: <span id="outSubject">................</span>
+                </div>
+
+                <!-- Content -->
+                <div class="content-section" id="outContent">
+                    لي عظيم الشرف أن أتقدم إلى سيادتكم المحترمة بهذا الطلب...
+                </div>
+
+                <!-- Signature -->
+                <div class="signature-section">
+                    <div>الإمضاء:</div>
+                    <div style="margin-top: 10px; font-style: italic;" id="outSignature"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{
+    "name": "مولّد الطلب الخطي الجزائري",
+    "short_name": "طلب خطي",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#f3f4f6",
+    "theme_color": "#006633",
+    "description": "تطبيق لإنشاء الطلبات الخطية الإدارية الجزائرية",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
