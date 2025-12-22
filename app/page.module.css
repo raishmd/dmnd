@@ -1,0 +1,13 @@
+.appContainer {
+    display: flex;
+    min-height: 100vh;
+    gap: 0;
+}
+
+@media (max-width: 1024px) {
+    .appContainer {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+}
