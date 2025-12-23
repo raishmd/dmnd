@@ -28,6 +28,7 @@ export default function Home() {
     fontSize: 16,
   });
 
+  const [isGenerating, setIsGenerating] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -45,6 +46,43 @@ export default function Home() {
       ...prev,
       fontSize: parseInt(e.target.value, 10),
     }));
+  };
+
+  const handleGenerateContent = async () => {
+    if (!formData.subject) {
+      alert('الرجاء إدخال الموضوع أولاً');
+      return;
+    }
+
+    setIsGenerating(true);
+    try {
+      const response = await fetch('/api/generate-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          subject: formData.subject,
+          name: formData.name,
+          director: formData.director,
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        alert(error.error || 'خطأ في توليد المحتوى');
+        return;
+      }
+
+      const { content } = await response.json();
+      setFormData((prev) => ({
+        ...prev,
+        content,
+      }));
+    } catch (error) {
+      alert('خطأ في الاتصال بخادم الذكاء الاصطناعي');
+      console.error(error);
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const handlePrint = () => {
@@ -107,9 +145,11 @@ export default function Home() {
         formData={formData}
         onInputChange={handleInputChange}
         onFontSizeChange={handleFontSizeChange}
+        onGenerateContent={handleGenerateContent}
         onPrint={handlePrint}
         onDownloadPDF={handleDownloadPDF}
         onDownloadDOCX={handleDownloadDOCX}
+        isGenerating={isGenerating}
       />
       <RequestPreview ref={previewRef} formData={formData} />
     </div>

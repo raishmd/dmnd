@@ -115,6 +115,17 @@
     color: var(--primary-color);
 }
 
+.btnAI {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.btnAI:hover {
+    opacity: 0.9;
+}
+
 @media (max-width: 1024px) {
     .formSection {
         width: 100%;

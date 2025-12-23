@@ -58,7 +58,6 @@ const RequestPreview = forwardRef<HTMLDivElement, RequestPreviewProps>(
           <div className={styles.signatureSection}>
             <div>الإمضاء:</div>
             <div style={{ marginTop: '10px', fontStyle: 'italic' }}>
-              {formData.name || ''}
             </div>
           </div>
         </div>

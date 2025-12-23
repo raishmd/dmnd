@@ -15,18 +15,22 @@ interface RequestFormProps {
   formData: FormData;
   onInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onFontSizeChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onGenerateContent: () => Promise<void>;
   onPrint: () => void;
   onDownloadPDF: () => void;
   onDownloadDOCX: () => void;
+  isGenerating?: boolean;
 }
 
 export default function RequestForm({
   formData,
   onInputChange,
   onFontSizeChange,
+  onGenerateContent,
   onPrint,
   onDownloadPDF,
   onDownloadDOCX,
+  isGenerating = false,
 }: RequestFormProps) {
   return (
     <div className={styles.formSection}>
@@ -118,10 +122,17 @@ export default function RequestForm({
         <label htmlFor="inputContent">محتوى الطلب</label>
         <textarea
           id="inputContent"
-          placeholder="أكتب نص الطلب هنا..."
+          placeholder="أكتب نص الطلب هنا أو استخدم زر التوليد الذكي..."
           value={formData.content}
           onChange={onInputChange}
         ></textarea>
+        <button
+          className={`${styles.btn} ${styles.btnAI}`}
+          onClick={onGenerateContent}
+          disabled={isGenerating}
+        >
+          <span>{isGenerating ? '⏳ جاري التوليد...' : '✨ توليد ذكي'}</span>
+        </button>
       </div>
 
       <div className={styles.actions}>
