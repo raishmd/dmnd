@@ -87,3 +87,24 @@
         padding: 15mm;
     }
 }
+
+@media print {
+    .previewSection {
+        background: white !important;
+        padding: 0 !important;
+        display: flex  !important;
+
+    }
+
+    .requestPage {
+        width: 210mm !important;
+        min-height: 297mm !important;
+        background: white !important;
+        box-shadow: none !important;
+        page-break-after: always !important;
+        /* keep top/bottom/left padding, remove right padding for printed page */
+        /* padding: 10mm  !important; */
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}

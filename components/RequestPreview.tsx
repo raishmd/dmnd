@@ -25,7 +25,7 @@ const RequestPreview = forwardRef<HTMLDivElement, RequestPreviewProps>(
     };
 
     return (
-      <div className={styles.previewSection} ref={ref}>
+      <div className={styles.previewSection} ref={ref} data-print-container>
         <div className={styles.requestPage} data-page>
           {/* Header: Sender & Date */}
           <div className={styles.pageHeader}>
