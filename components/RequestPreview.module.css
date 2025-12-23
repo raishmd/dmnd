@@ -15,11 +15,12 @@
     padding: 25mm;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     position: relative;
-    font-family: 'Times New Roman', serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     color: black;
     direction: rtl;
     line-height: 1.6;
-    font-size: 16pt;
+    font-size: 18pt;
+    font-weight: 500;
 }
 
 /* A4 Content Layout */

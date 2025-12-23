@@ -25,7 +25,7 @@ export default function Home() {
     director: '',
     subject: '',
     content: '',
-    fontSize: 16,
+    fontSize: 18,
   });
 
   const [isGenerating, setIsGenerating] = useState(false);
