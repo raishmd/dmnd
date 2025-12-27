@@ -56,9 +56,7 @@ const RequestPreview = forwardRef<HTMLDivElement, RequestPreviewProps>(
 
           {/* Signature */}
           <div className={styles.signatureSection}>
-            <div>الإمضاء:</div>
-            <div style={{ marginTop: '10px', fontStyle: 'italic' }}>
-            </div>
+            <div>إمضاء المعني:</div>
           </div>
         </div>
       </div>

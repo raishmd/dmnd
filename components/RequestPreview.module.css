@@ -1,11 +1,12 @@
 .previewSection {
     flex: 1;
-    background: #525659;
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 2rem;
+    padding: 3rem;
     overflow-y: auto;
+    perspective: 1000px;
 }
 
 .requestPage {
@@ -13,14 +14,20 @@
     min-height: 297mm;
     background: white;
     padding: 25mm;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     position: relative;
-    font-family: 'Georgia', 'Times New Roman', serif;
-    color: black;
+    font-family: 'Times New Roman', serif;
+    color: #1a1a1a;
     direction: rtl;
-    line-height: 1.6;
+    line-height: 1.8;
     font-size: 18pt;
-    font-weight: 500;
+    font-weight: 400;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center top;
+}
+
+.requestPage:hover {
+    transform: translateY(-5px) rotateX(2deg);
 }
 
 /* A4 Content Layout */
@@ -28,52 +35,65 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .senderInfo {
     text-align: right;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 0.4rem;
+    font-size: 0.9em;
+}
+
+.senderInfo span {
+    font-weight: 600;
 }
 
 .dateInfo {
     text-align: left;
     min-width: 150px;
+    font-size: 0.9em;
 }
 
 .recipientSection {
-    margin-top: 2rem;
+    margin-top: 3rem;
     text-align: left;
     padding-left: 2rem;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 1.1em;
 }
 
 .subjectSection {
-    margin-top: 3rem;
+    margin-top: 4rem;
     text-align: center;
-    font-weight: bold;
-    text-decoration: underline;
+    font-weight: 700;
+    font-size: 1.2em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    padding-bottom: 2px;
 }
 
 .contentSection {
-    margin-top: 2rem;
+    margin-top: 3rem;
     text-align: justify;
     white-space: pre-wrap;
-    min-height: 200px;
+    min-height: 300px;
+    line-height: 2;
 }
 
 .signatureSection {
-    margin-top: 4rem;
+    margin-top: 5rem;
     text-align: left;
-    padding-left: 3rem;
-    font-weight: bold;
+    padding-left: 4rem;
+    font-weight: 700;
 }
 
 @media (max-width: 1024px) {
     .previewSection {
-        padding: 1rem;
+        padding: 1.5rem;
         height: auto;
         min-height: auto;
         overflow: visible;
@@ -85,6 +105,7 @@
         height: auto;
         min-height: 297mm;
         padding: 15mm;
+        transform: none !important;
     }
 }
 
@@ -92,8 +113,8 @@
     .previewSection {
         background: white !important;
         padding: 0 !important;
-        display: flex  !important;
-
+        display: block !important;
+        overflow: visible !important;
     }
 
     .requestPage {
@@ -101,10 +122,8 @@
         min-height: 297mm !important;
         background: white !important;
         box-shadow: none !important;
-        page-break-after: always !important;
-        /* keep top/bottom/left padding, remove right padding for printed page */
-        /* padding: 10mm  !important; */
-        display: flex !important;
-        flex-direction: column !important;
+        padding: 20mm !important;
+        transform: none !important;
+        margin: 0 !important;
     }
 }

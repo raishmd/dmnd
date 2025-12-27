@@ -2,15 +2,15 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  themeColor: "#006633",
+  themeColor: "#6366f1",
 };
 
 export const metadata: Metadata = {
   title: "مولّد الطلب الخطي الجزائري",
   description: "أداة لإنشاء الطلبات الخطية الجزائرية بسهولة",
   icons: {
-    icon: "/favicon.ico",
-    apple: "/api/favicon",
+    icon: "/icon.svg",
+    apple: "/icon.svg",
   },
   manifest: "/manifest.json",
 };

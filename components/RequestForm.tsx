@@ -35,12 +35,28 @@ export default function RequestForm({
   return (
     <div className={styles.formSection}>
       <div className={styles.formHeader}>
+        <div className={styles.iconWrapper}>
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 4L6 24L24 44L42 24L24 4Z" fill="url(#logo-grad-1)" fillOpacity="0.8" />
+            <path d="M24 4L15 24L24 34L33 24L24 4Z" fill="white" fillOpacity="0.3" />
+            <path d="M24 14L18 24L24 30L30 24L24 14Z" fill="white" fillOpacity="0.5" />
+            <defs>
+              <linearGradient id="logo-grad-1" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#6366f1" />
+                <stop offset="1" stopColor="#ec4899" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
         <h1>مولّد الطلب الخطي</h1>
-        <p>أدخل معلوماتك لإنشاء الطلب تلقائياً</p>
+        <p>أنشئ طلبك الإداري بلمسة عصرية وذكية</p>
       </div>
 
       <div className={styles.formGroup}>
-        <label htmlFor="fontSize">حجم الخط</label>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <label htmlFor="fontSize">حجم الخط</label>
+          <div className={styles.fontSizeVal}>{formData.fontSize}pt</div>
+        </div>
         <input
           type="range"
           id="fontSize"
@@ -50,7 +66,6 @@ export default function RequestForm({
           step="1"
           onChange={onFontSizeChange}
         />
-        <div className={styles.fontSizeVal}>{formData.fontSize}pt</div>
       </div>
 
       <div className={styles.formGroup}>
@@ -61,6 +76,7 @@ export default function RequestForm({
           placeholder="مثال: محمد أحمد"
           value={formData.name}
           onChange={onInputChange}
+          autoComplete="name"
         />
       </div>
 
@@ -72,6 +88,7 @@ export default function RequestForm({
           placeholder="مثال: حي الزهور، الجزائر الوسطى"
           value={formData.address}
           onChange={onInputChange}
+          autoComplete="street-address"
         />
       </div>
 
@@ -83,6 +100,7 @@ export default function RequestForm({
           placeholder="0661 00 00 00"
           value={formData.phone}
           onChange={onInputChange}
+          autoComplete="tel"
         />
       </div>
 
@@ -131,19 +149,13 @@ export default function RequestForm({
           onClick={onGenerateContent}
           disabled={isGenerating}
         >
-          <span>{isGenerating ? '⏳ جاري التوليد...' : '✨ توليد ذكي'}</span>
+          <span>{isGenerating ? '⏳ جاري التوليد...' : '✨ توليد ذكي بالذكاء الاصطناعي'}</span>
         </button>
       </div>
 
       <div className={styles.actions}>
         <button className={`${styles.btn} ${styles.btnPrimary}`} onClick={onPrint}>
-          <span>🖨️ طباعة</span>
-        </button>
-        <button className={`${styles.btn} ${styles.btnSecondary}`} onClick={onDownloadPDF}>
-          <span>📄 تحميل PDF</span>
-        </button>
-        <button className={`${styles.btn} ${styles.btnOutline}`} onClick={onDownloadDOCX}>
-          <span>📝 تحميل DOCX</span>
+          <span>🖨️ طباعة الطلب</span>
         </button>
       </div>
     </div>

@@ -34,7 +34,7 @@ export default function Home() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     const key = id.replace('input', '').toLowerCase();
-    
+
     setFormData((prev) => ({
       ...prev,
       [key]: value,
@@ -91,7 +91,7 @@ export default function Home() {
 
   const handleDownloadPDF = () => {
     const element = previewRef.current?.querySelector('[data-page]');
-    
+
     if (!element || typeof window === 'undefined') return;
 
     // Use window.html2pdf if available (loaded from public/libs)
@@ -128,7 +128,7 @@ export default function Home() {
     const filename = 'طلب_خطي.docx';
     const preHtml = `<html xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="urn:schemas-openxmlformats-org:drawingml:2006:wordprocessingDrawing"><head><meta charset='UTF-8'><style></style></head><body>`;
     const postHtml = '</body></html>';
-    
+
     const html = preHtml + element.innerHTML + postHtml;
     const blob = new Blob([html], { type: 'application/msword' });
     const url = URL.createObjectURL(blob);
@@ -141,6 +141,9 @@ export default function Home() {
 
   return (
     <div className={styles.appContainer}>
+      <div className={styles.decorativeCircle1}></div>
+      <div className={styles.decorativeCircle2}></div>
+
       <RequestForm
         formData={formData}
         onInputChange={handleInputChange}

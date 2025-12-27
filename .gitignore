@@ -35,8 +35,8 @@ yarn-error.log*
 index.html
 script.js
 style.css
-sw.js
-next.config.js
+# sw.js removed from ignore (PWA)
+# next.config.js removed from ignore
 favicon.ico
 fonts/
 libs/
