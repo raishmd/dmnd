@@ -2,7 +2,5 @@
   "buildCommand": "next build",
   "devCommand": "next dev",
   "installCommand": "npm ci",
-  "outputDirectory": ".next/standalone",
-  "framework": "nextjs",
-  "nodeVersion": "18"
+  "framework": "nextjs"
 }
